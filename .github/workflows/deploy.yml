@@ -16,7 +16,7 @@ jobs:
     - run: flutter config --enable-web
     - run: flutter pub get
     - run: flutter build web --release
-    - run: cp build/web target/
+    - run: cp -R build/web target/
     - name: Pushes to another repository
       uses: cpina/github-action-push-to-another-repository@master
       env:
