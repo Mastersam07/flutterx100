@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_web:
+    name: Build Flutter (Web)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: subosito/flutter-action@v1
+      with:
+          channel: 'dev'
+    - run: flutter config --enable-web
+    - run: flutter pub get
+    - run: |
+          flutter build web
+          copy /build/web/ target
+    - name: Pushes to another repository
+      uses: cpina/github-action-push-to-another-repository@master
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.MY_TOKEN }}
+      with:
+        source-directory: 'target'
+        destination-github-username: 'mastersam07'
+        destination-repository-name: 'ddd'
+        user-email: abadasamuelosp@gmail.com
