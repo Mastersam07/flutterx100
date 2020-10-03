@@ -26,3 +26,5 @@ jobs:
         destination-github-username: 'mastersam07'
         destination-repository-name: 'ddd'
         user-email: abadasamuelosp@gmail.com
+        destination-repository-username: 'mastersam07'
+        target-branch: 'main'
